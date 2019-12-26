@@ -4,10 +4,13 @@ module.exports = {
 
   cadastrarDev: async (req, res) => {
     const { username } = req.body;
-    console.log(username);
+
+    const userExists = await Dev.find({user: username});
+
+    if (userExists) return res.json(userExists);
+
     const response = await axios.get(`https://api.github.com/users/${username}`);
     const {name, avatar_url: avatar, bio} = response.data;
-    console.log(name + avatar + bio);
 
     const dev = await Dev.create({
       name,
@@ -16,8 +19,7 @@ module.exports = {
       avatar,
     });
 
-    console.log("\na" + dev);
     return res.json(dev);
-  },
+  }
 
 };
