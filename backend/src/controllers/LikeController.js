@@ -12,13 +12,13 @@ module.exports = {
 
     if(actualUser._id === likedUser._id) return res.json({err: false});
     
-    if(actualUser.likes.includes(likedUser._id)) return console.log("It is a match!!!");
+    if(likedUser.likes.includes(actualUser._id)) return console.log("It is a match!!!");
     
-    actualUser.likes.push(likedUser._id);
+    likedUser.likes.push(actualUser._id);
 
-    await actualUser.save();
+    await likedUser.save();
 
-    return res.json({ ok: true });
+    return res.json(likedUser);
   },
 
 };
