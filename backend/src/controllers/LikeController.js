@@ -12,7 +12,7 @@ module.exports = {
 
     if(actualUser._id === likedUser._id) return res.json({err: false});
     
-    if(likedUser.likes.includes(actualUser._id)) return console.log("It is a match!!!");
+    if(actualUser.likes.includes(likedUser._id)) console.log("It is a match!!!");
     
     likedUser.likes.push(actualUser._id);
 

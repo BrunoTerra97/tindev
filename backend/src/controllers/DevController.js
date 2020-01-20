@@ -22,13 +22,11 @@ module.exports = {
 
   cadastrarDev: async (req, res) => {
     const { username } = req.body;
-    
-    console.log('username: ' + username);
 
     if(!username) return res.json({erro: false});
     
     const userExists = await Dev.findOne({user: username});
-    
+
     if (userExists) return res.json(userExists);
 
     let response;

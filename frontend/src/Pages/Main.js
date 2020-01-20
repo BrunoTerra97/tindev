@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import api from "../services/api";
 import tindev from '../assets/tindev.svg';
 import like from '../assets/like.svg';
@@ -42,10 +43,12 @@ export default function Main ({ match }) {
 
   return (
     <div className="main-container">
-      <img src={tindev} alt='tindev'/>
+      <Link to='/'>
+        <img src={tindev} alt='tindev'/>
+      </Link>
+      { users.length ? 
       <ul>
-        {
-          users.map((user) => (
+          {users.map((user) => (
             <li key={user._id}>
               <img src={user.avatar} alt='User Avatar'/>
               <footer>
@@ -57,9 +60,9 @@ export default function Main ({ match }) {
                 <button type='button' onClick={() => handleDislike(user._id)}> <img src={dislike} alt='dislike'/> </button>
               </div>
             </li>
-          ))
-        }
-      </ul>
+          ))}
+      </ul> : <div className="empty-users">Não há mais devs para escolher!!!</div>
+      }
     </div>
   );
 }
