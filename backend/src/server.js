@@ -6,7 +6,7 @@ const cors = require('cors');
 const server = express();
 
 mongoose.connect(
-  'mongodb+srv://omnistack8:b123@cluster0-kg31k.mongodb.net/tindev?retryWrites=true&w=majority',
+  'mongodb+srv://**********:*************************************,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true 
